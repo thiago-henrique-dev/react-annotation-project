@@ -29,6 +29,8 @@ function App() {
       <main>
         <ul>
            <Notes/>
+           <Notes/>
+           <Notes/>
             
         </ul>
       </main>

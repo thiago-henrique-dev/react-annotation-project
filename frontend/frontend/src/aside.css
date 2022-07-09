@@ -5,8 +5,16 @@ aside {
     box-shadow: 0 0 14px 0 rgba(0,0,0, 0.2);
     border-radius: 10px;
     padding: 30px 20px;
-    margin-left: 75px;
+  
     
+    
+    
+}
+
+@media (max-width: 1000px){
+    aside{
+        position: relative;
+    }
 }
 
 aside strong {
