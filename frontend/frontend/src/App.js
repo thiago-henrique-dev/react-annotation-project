@@ -5,6 +5,7 @@ import './global.css'
 import './aside.css'
 import './main.css'
 import Notes from '../src/Componentes/Notes/index'
+import RadioButton from "./Componentes/RadioButton";
 
 
  function App() {
@@ -38,6 +39,17 @@ import Notes from '../src/Componentes/Notes/index'
   }
 
 
+  useEffect(() => {
+    function enableSubmitButton(){
+     let btn = document.getElementById('btn_submit')
+     btn.style.background = '#FFD3CA'
+     if(title && notes){
+      btn.style.background = '#EB8F7A'
+     }
+    }
+
+    enableSubmitButton()
+  }, [title, notes])
 
   return (
     <div id="app">
@@ -48,6 +60,7 @@ import Notes from '../src/Componentes/Notes/index'
           <label htmlFor="title">Titulo da Anotação</label>
          <input
             riquered
+            maxLength="30"
             value={title}
             onChange={e => setTitle(e.target.value)}
           />
@@ -63,8 +76,9 @@ import Notes from '../src/Componentes/Notes/index'
 
           </div>
 
-          <button type="submit">Salvar</button>
+          <button id="btn_submit" type="submit">Salvar</button>
         </form>
+        <RadioButton/>
       </aside>
       <main>
         <ul>

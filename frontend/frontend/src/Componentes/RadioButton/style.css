@@ -1,0 +1,7 @@
+.radioOptions {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    font-size: 12;
+    
+}
