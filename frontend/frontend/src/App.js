@@ -34,6 +34,7 @@ import Notes from '../src/Componentes/Notes/index'
 
     setTitle('')
     setNotes('')
+    setAllNotes([... allNotes, response.data])
   }
 
 
