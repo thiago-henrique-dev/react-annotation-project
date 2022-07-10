@@ -15,20 +15,28 @@ import RadioButton from "./Componentes/RadioButton";
 
 
   useEffect(() => {
-    async function getAllNotes(){
-      const response  = await  api.get('/annotations')
-
-      setAllNotes(response.data)
-    }
-
+    
     getAllNotes()
   }, [])
+  async function getAllNotes(){
+    const response  = await  api.get('/annotations')
 
+    setAllNotes(response.data)
+  }
+  
   async function handleDelete(id){
     const deletedNote = await api.delete(`/annotations/${id}`)
 
     if(deletedNote){
       setAllNotes(allNotes.filter(note => note._id != id))
+    }
+  }
+
+  async function handleChangePriority(id){
+    const note = await api.post(`/priorities/${id}`);
+
+    if(note){
+      getAllNotes()
     }
   }
 
@@ -96,6 +104,7 @@ import RadioButton from "./Componentes/RadioButton";
               key={data._id}
               data={data}
               handleDelete={handleDelete}
+              handleChangePriority={handleChangePriority}
               />
             ))
           }
