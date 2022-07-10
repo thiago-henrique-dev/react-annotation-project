@@ -24,6 +24,14 @@ import RadioButton from "./Componentes/RadioButton";
     getAllNotes()
   }, [])
 
+  async function handleDelete(id){
+    const deletedNote = await api.delete(`/annotations/${id}`)
+
+    if(deletedNote){
+      setAllNotes(allNotes.filter(note => note._id != id))
+    }
+  }
+
 
   async function handleSubmit(e){
     e.preventDefault()
@@ -84,7 +92,11 @@ import RadioButton from "./Componentes/RadioButton";
         <ul>
           {
             allNotes.map(data => (
-              <Notes data={data}/>
+              <Notes 
+              key={data._id}
+              data={data}
+              handleDelete={handleDelete}
+              />
             ))
           }
          
